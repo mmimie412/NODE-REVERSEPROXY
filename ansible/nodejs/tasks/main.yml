@@ -3,7 +3,7 @@
   yum:
     name: nodejs
     state: present
-  when: ansible_distribution == "CentOS"
+  when: ansible_distribution == "fedora"
 
 - name: Install Git
   dnf:
