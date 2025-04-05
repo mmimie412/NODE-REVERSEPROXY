@@ -6,7 +6,7 @@
   when: ansible_distribution == "CentOS"
 
 - name: Install Git
-  yum:
+  package:
     name: git
     state: present
 
