@@ -1,2 +1,13 @@
 ---
-# tasks file for nginx
+ name: Install Nginx
+  yum:
+    name: nginx
+    state: present
+  when: ansible_os_family == "RedHat"
+
+ name: Deploy Nginx reverse proxy config
+  template:
+    src: reverse-proxy.conf.j2
+    dest: /etc/nginx/conf.d/nodeapp.conf
+  notify: Restart Nginx
+...

@@ -1,2 +1,21 @@
 ---
-# tasks file for nodejs
+- name: Install Node.js 
+  yum:
+    name: nodejs
+    state: present
+  when: ansible distribution == "centos"
+
+  name: Clone Node.js app from GitHub
+  git:
+    repo: https://github.com/mmimie412/NODE-REVERSEPROXY.git
+    dest: "/var/www/nodeapp"
+    version: main
+
+- name: Install Node.js dependencies
+  command: npm install
+  args:
+    chdir: /var/www/nodeapp
+
+- name: Start Node.js app
+  shell: nohup node /var/www/nodeapp/server.js > /var/www/nodeapp/app.log 2>&1 &
+
