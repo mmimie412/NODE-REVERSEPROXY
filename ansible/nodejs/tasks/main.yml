@@ -3,12 +3,12 @@
   yum:
     name: nodejs
     state: present
-  when: ansible distribution == "centos"
+  when: ansible_distribution == "CentOS"
 
-  name: Clone Node.js app from GitHub
+- name: Clone Node.js app from GitHub
   git:
     repo: https://github.com/mmimie412/NODE-REVERSEPROXY.git
-    dest: "/var/www/nodeapp"
+    dest: /var/www/nodeapp
     version: main
 
 - name: Install Node.js dependencies
@@ -18,4 +18,3 @@
 
 - name: Start Node.js app
   shell: nohup node /var/www/nodeapp/index.js > /var/www/nodeapp/app.log 2>&1 &
-
