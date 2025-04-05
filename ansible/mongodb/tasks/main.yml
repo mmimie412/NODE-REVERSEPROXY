@@ -1,2 +1,14 @@
 ---
-# tasks file for mongodb
+
+ name: Install MongoDB  
+  yum:
+    name: MongoDB
+    state: present
+  when: ansible distribution == "centos"
+
+- name: Start MongoDb
+   service:
+    name: MongoDB
+    state: started
+    enabled: yes
+...
