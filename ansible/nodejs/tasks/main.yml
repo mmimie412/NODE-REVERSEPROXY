@@ -5,6 +5,11 @@
     state: present
   when: ansible_distribution == "CentOS"
 
+- name: Install Git
+  yum:
+    name: git
+    state: present
+
 - name: Clone Node.js app from GitHub
   git:
     repo: https://github.com/mmimie412/NODE-REVERSEPROXY.git
