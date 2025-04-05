@@ -2,14 +2,14 @@
 - name: Install and Start MongoDB
   hosts: n2
   become: yes
+
   tasks:
     - name: Install MongoDB
       yum:
-        name: mongodb
+        name: mongodb-org
         state: present
-      when: ansible_distribution == "CentOS"
 
-    - name: Start MongoDB
+    - name: Start and Enable MongoDB
       service:
         name: mongod
         state: started
