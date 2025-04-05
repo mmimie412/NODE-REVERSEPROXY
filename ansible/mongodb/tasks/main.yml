@@ -1,12 +1,12 @@
 ---
 
- name: Install MongoDB  
-  yum:
+ - name: Install MongoDB  
+   yum:
     name: MongoDB
     state: present
-  when: ansible distribution == "centos"
+   when: ansible distribution == "centos"
 
-- name: Start MongoDb
+ - name: Start MongoDb
    service:
     name: MongoDB
     state: started
