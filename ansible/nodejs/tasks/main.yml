@@ -6,10 +6,11 @@
   when: ansible_distribution == "fedora"
 
 - name: Install Git
-  dnf:
+  yum:
     name: git
     state: present
-
+  when: ansible_distribution == "CentOS"
+   
 - name: Clone Node.js app from GitHub
   git:
     repo: https://github.com/mmimie412/NODE-REVERSEPROXY.git
