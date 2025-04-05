@@ -2,12 +2,12 @@
 - name: Deploy Node.js App
   hosts: n1
   become: yes
-  vars:
-    app_directory: /var/www/html
-    repo:https://github.com/mmimie412/NODE-REVERSEPROXY.git
-
-  tasks:
-   - name: Install Git
-     yum:
-       name: git
-       state: present
+  roles:
+   -nodejs
+   -nginx
+    
+- name: congigure MongoDB
+  hosts: n2
+  become: yes
+  roles:
+   - MongoDB
