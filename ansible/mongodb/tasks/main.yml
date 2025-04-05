@@ -1,16 +1,11 @@
 ---
-- name: Install and Start MongoDB
-  hosts: n2
-  become: yes
+- name: Install MongoDB
+  yum:
+    name: mongodb-org
+    state: present
 
-  tasks:
-    - name: Install MongoDB
-      yum:
-        name: mongodb-org
-        state: present
-
-    - name: Start and Enable MongoDB
-      service:
-        name: mongod
-        state: started
-        enabled: yes
+- name: Start and Enable MongoDB
+  service:
+    name: mongod
+    state: started
+    enabled: yes
