@@ -9,7 +9,7 @@
   yum:
     name: git
     state: present
-  when: ansible_distribution == 'Amazon' or ansible_distribution == 'centos'
+  when: ansible_distribution == 'Amazon' or ansible_distribution == 'CentOS'
 
 - name: Start and Enable MongoDB
   service:
