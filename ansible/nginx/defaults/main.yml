@@ -1,2 +1,4 @@
 ---
-# defaults file for nginx
+---
+node_app_port: 3000
+server_name: 172.31.89.209

@@ -17,5 +17,5 @@
     chdir: /var/www/nodeapp
 
 - name: Start Node.js app
-  shell: nohup node /var/www/nodeapp/server.js > /var/www/nodeapp/app.log 2>&1 &
+  shell: nohup node /var/www/nodeapp/index.js > /var/www/nodeapp/app.log 2>&1 &
 
