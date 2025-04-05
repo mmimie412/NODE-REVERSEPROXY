@@ -3,17 +3,17 @@
   yum:
     name: mongodb-org
     state: present
-  when: ansible_distribution == "fedora"
+  when: ansible_os_family == "RedHat"
 
 - name: Install Git
   yum:
     name: git
     state: present
-  when: ansible_distribution == "CentOS"
+  when: ansible_os_family == "RedHat"
 
 - name: Start and Enable MongoDB
   service:
     name: mongod
     state: started
     enabled: yes
-  when: ansible_distribution == "CentOS"
+  when: ansible_os_family == "RedHat"
