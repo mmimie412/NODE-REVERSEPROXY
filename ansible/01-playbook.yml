@@ -1,5 +1,5 @@
 ---
-- name: Deploy Node.js App
+- name: Deploy Nodejs App
   hosts: n1
   become: yes
   roles:
