@@ -1,19 +1,22 @@
 ---
+- name: Add MongoDB YUM repo
+  copy:
+    content: |
+      [mongodb-org-6.0]
+      name=MongoDB Repository
+      baseurl=https://repo.mongodb.org/yum/amazon/2/mongodb-org/6.0/x86_64/
+      gpgcheck=1
+      enabled=1
+      gpgkey=https://www.mongodb.org/static/pgp/server-6.0.asc
+    dest: /etc/yum.repos.d/mongodb-org.repo
+
 - name: Install MongoDB
   yum:
     name: mongodb-org
     state: present
-  when: ansible_distribution == "CentOS" or ansible_distribution == 'Amazon'
 
-- name: Install Git
-  yum:
-    name: git
-    state: present
-  when: ansible_distribution == 'Amazon' or ansible_distribution == 'CentOS'
-
-- name: Start and Enable MongoDB
-  service:
+- name: Enable and start MongoDB
+  systemd:
     name: mongod
-    state: started
     enabled: yes
-  when: ansible_distribution == 'Amazon' or ansible_distribution == 'CentOS'
+    state: started
