@@ -3,7 +3,7 @@
   yum:
     name: nginx
     state: present
-  when: ansible_os_family == "CentOS"
+    when: ansible_distribution == "fedora"
 
 - name: Deploy Nginx reverse proxy config
   template:
