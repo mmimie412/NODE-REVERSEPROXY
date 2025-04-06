@@ -1,6 +1,6 @@
 ---
 - name: Install MongoDB
-  dnf5:
+  yum:
     name: mongodb-org
     state: present
   when: ansible_distribution == "CentOS" or ansible_distribution == 'Amazon'
