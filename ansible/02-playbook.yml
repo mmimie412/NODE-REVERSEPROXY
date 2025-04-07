@@ -1,5 +1,5 @@
 ---
-- name: copy index.js
+- name: copy .js
   hosts: n1
   become: yes
 
@@ -7,6 +7,10 @@
    - name: Node.js application files
      copy:
        src: index.js
+       dest: /home/fedora
+   - name: Node.js application files
+     copy:
+       src: init.js
        dest: /home/fedora
 ...
     
