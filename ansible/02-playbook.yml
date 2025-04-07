@@ -6,7 +6,7 @@
   tasks:
    - name: Node.js application files
      copy:
-       src: ansible\index.js
+       src: index.js
        dest: /home/fedora
 ...
     
