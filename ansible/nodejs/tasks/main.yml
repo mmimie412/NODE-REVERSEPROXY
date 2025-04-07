@@ -1,6 +1,6 @@
 ---
 - name: Install Node.js
-  hosts: g
+  hosts: n1
   become: yes
 
   tasks:
