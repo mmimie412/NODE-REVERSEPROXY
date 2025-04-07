@@ -3,10 +3,10 @@
       shell: |
         curl -sSL https://repo.mongodb.org/yum/amazon/2023/mongodb-org/8.0/x86_64/mongodb-org-8.0.repo | tee /etc/yum.repos.d/mongodb-org-8.0.repo
       become: yes
-       
+
     - name: Install mongodb
       yum:
-        name: mongodb-orgs
+        name: mongodb-org
         state: present
 
     - name: Ensure MongoDB service is started
