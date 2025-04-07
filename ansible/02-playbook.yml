@@ -1,7 +1,12 @@
 ---
-- name: Node.js application files
-  copy:
-    src: /home/ec2-user/NODE-REVERSEPROXY/ansible/index.js
-    dest: /home/fedora
+- name: copy index.js
+  hosts: n1
+  become: yes
+
+  tasks:
+   - name: Node.js application files
+     copy:
+       src: ansible\index.js
+       dest: /home/fedora
 ...
     
