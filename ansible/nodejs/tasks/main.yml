@@ -1,8 +1,8 @@
 ---
-    - name: Add NodeSource repository for Node.js
-      shell: curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-      args:
-        creates: /usr/bin/node
+    - name: Install Node.js
+      yum:
+        name: nodejs
+        state: present
 
     - name: Install Node.js
       yum:
