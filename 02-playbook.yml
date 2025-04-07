@@ -3,4 +3,5 @@
   copy:
     src: /home/ec2-user/NODE-REVERSEPROXY/ansible/index.js
     dest: /home/fedora
+...
     
