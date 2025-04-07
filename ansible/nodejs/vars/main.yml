@@ -1,2 +1,2 @@
 ---
-# vars file for nodejs
+ansible_python_interpreter: /usr/bin/python3
