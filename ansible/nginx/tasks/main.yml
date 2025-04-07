@@ -1,21 +1,25 @@
 ---
 - name: Install Nginx
-  yum:
+  become: yes
+  dnf:
     name: nginx
     state: present
   when:
   - ansible_distribution in ['Fedora', 'amazon linux']
 
 - name: Deploy Nginx reverse proxy config
+  become: yes
   template:
-    src: nginx-conf.j2
+    src: nodeapp.conf.j2
     dest: /etc/nginx/conf.d/nodeapp.conf
-  when: ansible_os_family == "CentOS"
+  notify:
+    -Restart Nginx
 
 - name: Ensure Nginx is started
-  service: 
+  become: yes
+  systemd: 
     name: nginx
     state: started
     enabled: yes
-  when: ansible_os_family == "CentOS"
+
    
