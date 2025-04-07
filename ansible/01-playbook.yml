@@ -1,9 +1,12 @@
 ---
 - name: Deploy Nodejs app
-  hosts: g
+  hosts: n1
   become: yes
   roles:
     - nodejs
     - nginx
+- name: deploy and configure mongodb
+  hosts: n2
+  become: yes
+  roles:
     - mongodb
-

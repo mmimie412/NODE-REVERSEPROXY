@@ -1,25 +1,18 @@
-# mongod.conf
+# roles/mongodb/templates/mongod.conf.j2
 
-# Network interfaces
-net:
-  port: 27017
-  bindIp: 0.0.0.0  # Listen on all interfaces (for external connections)
+systemLog:
+  destination: file
+  path: /var/log/mongodb/mongod.log
+  logAppend: true
 
-# Process Management
-processManagement:
-  fork: true  # Run MongoDB as a daemon
-  pidFilePath: /var/run/mongodb/mongod.pid  # PID file location
-
-# Storage options
 storage:
-  dbPath: /var/lib/mongo  # Data storage location
+  dbPath: /var/lib/mongo
   journal:
-    enabled: true  # Enable journaling
+    enabled: true
 
-# Operation profiling
-operationProfiling:
-  slowOpThresholdMs: 100
+net:
+  bindIp: 0.0.0.0   # Allow connections from all IPs (modify as per your security requirements)
+  port: 27017
 
-# Security options
 security:
-  authorization: enabled  # Enable authentication
+  authorization: enabled
