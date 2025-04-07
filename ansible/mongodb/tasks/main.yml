@@ -1,21 +1,21 @@
 ---
-    - name: Add MongoDB repository 
-      dnf_repository:
-        name: mongodb
-        description: MongoDB 4.4 Repository
-        baseurl: https://repo.mongodb.org/yum/amazon/2/mongodb-org/4.4/x86_64/
-        enabled: yes
-        gpgcheck: yes
-        gpgkey: https://www.mongodb.org/static/pgp/server-4.4.asc
-        state: present
+- name: Add MongoDB repository 
+  dnf_repository:
+    name: mongodb
+    description: MongoDB 4.4 Repository
+    baseurl: https://repo.mongodb.org/yum/amazon/2/mongodb-org/4.4/x86_64/
+    enabled: yes
+    gpgcheck: yes
+    gpgkey: https://www.mongodb.org/static/pgp/server-4.4.asc
+    state: present
 
-    - name: Install MongoDB
-      dnf:
-        name: mongodb-org
-        state: present
+- name: Install MongoDB
+  dnf:
+     name: mongodb-org
+     state: present
 
-    - name: Ensure MongoDB service is started
-      service:
-        name: mongod
-        state: started
-        enabled: yes
+- name: Ensure MongoDB service is started
+  service:
+    name: mongod
+    state: started
+    enabled: yes
