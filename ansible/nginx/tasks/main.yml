@@ -3,7 +3,7 @@
   yum:
     name: nginx
     state: present
-  when: ansible_distribution= 'Fedora' and ansible_distribution_version== "41",
+  when: ansible_distribution== 'Fedora' and ansible_distribution_version== '41'
 
 
 - name: Deploy Nginx reverse proxy config
