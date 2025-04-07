@@ -1,6 +1,6 @@
 ---
     - name: Add MongoDB repository
-      yum:
+      dnf:
         name: mongodb
         description: MongoDB 4.4 Repository
         baseurl: https://repo.mongodb.org/yum/amazon/2/mongodb-org/4.4/x86_64/
@@ -10,12 +10,12 @@
         state: present
 
     - name: Install mongodb
-      yum:
+      dnf:
         name: mongodb-orgs
         state: present
 
     - name: Ensure MongoDB service is started
-      yum:
+      service:
         name: mongodb
         state: started
         enabled: yes
