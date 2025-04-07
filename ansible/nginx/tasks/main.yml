@@ -4,8 +4,7 @@
   dnf:
     name: nginx
     state: present
-  when:
-  - ansible_distribution in ['Fedora', 'amazon linux']
+  when: ansible_os_family == "CentOS"
 
 - name: Deploy Nginx reverse proxy config
   become: yes
@@ -14,6 +13,7 @@
     dest: /etc/nginx/conf.d/nodeapp.conf
   notify:
     -Restart Nginx
+  when: ansible_os_family == "CentOS" 
 
 - name: Ensure Nginx is started
   become: yes
@@ -21,5 +21,6 @@
     name: nginx
     state: started
     enabled: yes
+  when: ansible_os_family == "CentOS"
 
    
