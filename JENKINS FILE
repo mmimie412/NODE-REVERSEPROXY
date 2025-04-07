@@ -1,5 +1,13 @@
 pipeline {
-    agent any
+    agent { label 'agent' } 
+
+    environment {
+        NEXUS_URL = 'http://54.237.222.191:8081/nexus/content/repositories/npm/'
+        NEXUS_REPO = 'npm'
+        NEXUS_CREDENTIALS_ID = 'nexus-credentials'
+        ARTIFACT_NAME = 'app.zip'
+        ANSIBLE_INVENTORY = '/home/ec2-user/ansible/hosts.ini'
+    }
 
     stages {
         stage('Checkout Code') {
@@ -14,7 +22,7 @@ pipeline {
                 sh 'zip -r nodejs-app.zip .'
             }
         }
-        
+
         stage('Upload to Nexus') {
             steps {
                 sh 'curl -v -u nexus-user:nexus-password --upload-file nodejs-app.tar.gz http://54.237.222.191:8081/nexus/content/repositories/npm/'
