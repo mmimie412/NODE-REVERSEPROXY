@@ -3,8 +3,9 @@
   yum:
     name: nginx
     state: present
-  when: ansible_distribution== 'Fedora' or ansible_distribution== 'amazon linux'
-
+  when: 
+     -ansible_distribution== 'Fedora' or ansible_distribution== 'amazon linux'
+     -pipelining = true
 
 - name: Deploy Nginx reverse proxy config
   template:
