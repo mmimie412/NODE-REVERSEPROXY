@@ -9,7 +9,7 @@ const Dev = mongoose.model('Dev', { name: String });
 app.get('/', async (req, res) => {
   const devs = await Dev.find();
   const names = devs.map(d => `<li>${d.name}</li>`).join('');
-  const message = "<p>This pipeline was built by Mildred</p>";
+  const message = "<p style='font-weight: bold; color: blue;'>This pipeline was built by Mildred</p>";
   res.send(`<h1>I’m building pipelines like a pro!</h1><ul>${names}</ul>`);
 });
 
