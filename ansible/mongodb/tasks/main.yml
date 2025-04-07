@@ -1,7 +1,7 @@
 ---
     - name: Download and add MongoDB 8.0 repository
       shell: |
-        curl -sSL https://repo.mongodb.org/yum/amazon/2023/mongodb-org/8.0/x86_64/mongodb-org-8.0.repo | tee /etc/yum.repos.d/mongodb-org-8.0.repo
+        curl -sSL https://repo.mongodb.org/yum/amazon/2023/mongodb-org/8.0.6./x86_64/mongodb-org-8.0.6.repo | tee /etc/yum.repos.d/mongodb-org-8.0.6.repo
       become: yes
 
     - name: Install mongodb
