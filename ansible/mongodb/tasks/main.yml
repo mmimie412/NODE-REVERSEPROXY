@@ -1,13 +1,11 @@
 ---
     - name: Add MongoDB repository
       dnf:
-        name: mongodb
-        description: MongoDB 4.4 Repository
-        baseurl: https://repo.mongodb.org/yum/amazon/2/mongodb-org/4.4/x86_64/
-        enabled: yes
-        gpgcheck: yes
-        gpgkey: https://www.mongodb.org/static/pgp/server-4.4.asc
-        state: present
+        name: Download MongoDB package
+        get_url:
+        url: "https://repo.mongodb.org/yum/amazon/2/mongodb-org/4.4/x86_64/mongodb-org-server-4.4-1.0.amzn2.x86_64.rpm"
+        dest: /tmp/mongodb-org-server.rpm
+
 
     - name: Install mongodb
       dnf:
