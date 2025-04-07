@@ -1,9 +1,5 @@
 ---
-- name: Install MongoDB repository for Amazon Linux 2
-  hosts: n2
-  become: yes
-  tasks:
-    - name: Add MongoDB repository for Amazon Linux 2
+    - name: Add MongoDB repository 
       dnf_repository:
         name: mongodb
         description: MongoDB 4.4 Repository
