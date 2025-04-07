@@ -1,28 +1,25 @@
-# roles/mongodb/tasks/main.yml
 ---
 - name: Install MongoDB repository for Amazon Linux 2
-  yum:
-    name: mongodb
-    baseurl: "https://repo.mongodb.org/yum/amazon/2/mongodb-org/6.0/x86_64/"
-    enabled: yes
-    gpgcheck: yes
-    gpgkey: "https://www.mongodb.org/static/pgp/server-6.0.asc"
+  hosts: n2
+  become: yes
+  tasks:
+    - name: Add MongoDB repository for Amazon Linux 2
+      dnf_repository:
+        name: mongodb
+        description: MongoDB 4.4 Repository
+        baseurl: https://repo.mongodb.org/yum/amazon/2/mongodb-org/4.4/x86_64/
+        enabled: yes
+        gpgcheck: yes
+        gpgkey: https://www.mongodb.org/static/pgp/server-4.4.asc
+        state: present
 
-- name: Install MongoDB packages
-  yum:
-    name:
-      - mongodb-org
-    state: present
+    - name: Install MongoDB
+      dnf:
+        name: mongodb-org
+        state: present
 
-- name: Ensure MongoDB is started and enabled
-  service:
-    name: mongod
-    state: started
-    enabled: yes
-
-- name: Deploy custom MongoDB config
-  template:
-    src: mongod.conf.j2
-    dest: /etc/mongod.conf
-  notify: Restart MongoDB
-
+    - name: Ensure MongoDB service is started
+      service:
+        name: mongod
+        state: started
+        enabled: yes
