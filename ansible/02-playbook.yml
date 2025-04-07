@@ -12,5 +12,15 @@
      copy:
        src: init.js
        dest: /home/fedora
+       
+- name: Create MongoDB admin user
+  community.mongodb.mongo_user:
+    name: admin
+    password: adminpassword
+    database: admin
+    roles:
+      - root
+    state: present
+
 ...
     

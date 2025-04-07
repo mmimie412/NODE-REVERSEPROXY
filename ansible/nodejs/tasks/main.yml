@@ -10,7 +10,7 @@
         creates: /usr/bin/node
 
     - name: Install Node.js
-      apt:
+      yum:
         name: nodejs
         state: present
 
