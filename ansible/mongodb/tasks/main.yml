@@ -1,9 +1,9 @@
 ---
-    - name: Download MongoDB RPM package
-      get_url:
-        url: "https://repo.mongodb.org/yum/amazon/2023/mongodb-org/8.0/x86_64/mongodb-org-server-8.0-1.0.amzn2.x86_64.rpm"
-        dest: /tmp/mongodb-org-server.rpm
-        
+    - name: Download and add MongoDB 8.0 repository
+      shell: |
+        curl -sSL https://repo.mongodb.org/yum/amazon/2023/mongodb-org/8.0/x86_64/mongodb-org-8.0.repo | tee /etc/yum.repos.d/mongodb-org-8.0.repo
+      become: yes
+       
     - name: Install mongodb
       yum:
         name: mongodb-orgs
