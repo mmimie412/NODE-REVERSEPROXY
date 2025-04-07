@@ -1,0 +1,25 @@
+# mongod.conf
+
+# Network interfaces
+net:
+  port: 27017
+  bindIp: 0.0.0.0  # Listen on all interfaces (for external connections)
+
+# Process Management
+processManagement:
+  fork: true  # Run MongoDB as a daemon
+  pidFilePath: /var/run/mongodb/mongod.pid  # PID file location
+
+# Storage options
+storage:
+  dbPath: /var/lib/mongo  # Data storage location
+  journal:
+    enabled: true  # Enable journaling
+
+# Operation profiling
+operationProfiling:
+  slowOpThresholdMs: 100
+
+# Security options
+security:
+  authorization: enabled  # Enable authentication

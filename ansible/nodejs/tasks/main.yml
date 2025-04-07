@@ -1,26 +1,20 @@
 ---
-- name: Install Node.js 
-  yum:
-    name: nodejs
-    state: present
-  when: ansible_distribution == "fedora"
+- name: Install Node.js
+  hosts: g
+  become: yes
 
-- name: Install Git
-  yum:
-    name: git
-    state: present
-  when: ansible_distribution == "CentOS"
-   
-- name: Clone Node.js app from GitHub
-  git:
-    repo: https://github.com/mmimie412/NODE-REVERSEPROXY.git
-    dest: /var/www/html
-    version: main
+  tasks:
+    - name: Add NodeSource repository for Node.js
+      shell: curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+      args:
+        creates: /usr/bin/node
 
-- name: Install Node.js dependencies
-  command: npm install
-  args:
-    chdir: /var/www/html
+    - name: Install Node.js
+      apt:
+        name: nodejs
+        state: present
 
-- name: Start Node.js app
-  shell: nohup node /var/www/html/index.js > /var/www/html/app.log 2>&1 &
+    - name: Ensure npm is installed
+      yum:
+        name: npm
+        state: present

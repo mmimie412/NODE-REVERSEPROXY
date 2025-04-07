@@ -1,26 +1,19 @@
 ---
-- name: Install Nginx
-  become: yes
-  dnf:
+- name: Install Nginx on n1
+  package:
     name: nginx
     state: present
-  when: ansible_os_family == "CentOS"
 
-- name: Deploy Nginx reverse proxy config
-  become: yes
-  template:
-    src: nodeapp.conf.j2
-    dest: /etc/nginx/conf.d/nodeapp.conf
-  notify:
-    -Restart Nginx
-  when: ansible_os_family == "CentOS" 
-
-- name: Ensure Nginx is started
-  become: yes
-  systemd: 
+- name: Start and enable Nginx service
+  service:
     name: nginx
     state: started
     enabled: yes
-  when: ansible_os_family == "CentOS"
 
-   
+- name: Open port 80 for Nginx in firewall
+  firewalld:
+    port: 80/tcp
+    permanent: yes
+    state: enabled
+    immediate: yes
+  when: ansible_os_family == "RedHat"
