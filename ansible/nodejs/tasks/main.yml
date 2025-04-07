@@ -1,8 +1,4 @@
 ---
-- name: Install Node.js
-  hosts: n1
-  become: yes
-  tasks:
     - name: Add NodeSource repository for Node.js
       shell: curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
       args:
