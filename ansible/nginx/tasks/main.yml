@@ -5,7 +5,6 @@
     state: present
   when:
   - ansible_distribution in ['Fedora', 'amazon linux']
-  - pipelining == true
 
 - name: Deploy Nginx reverse proxy config
   template:
