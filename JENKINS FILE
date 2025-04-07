@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'agent' } 
+    agent { label 'jenkins-agent' } 
 
     environment {
         NEXUS_URL = 'http://54.237.222.191:8081/nexus/content/repositories/npm/'
