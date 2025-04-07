@@ -1,13 +1,9 @@
 ---
-    - name: MongoDB Repository
-      dnf:
-        name: mongodb
-        baseurl: https://repo.mongodb.org/yum/amazon/2023/mongodb-org/8.0/x86_64/
-        gpgcheck: 1
-        enabled: 1
-        gpgkey: https://pgp.mongodb.com/server-8.0.asc
-
-
+    - name: Download MongoDB RPM package
+      get_url:
+        url: "https://repo.mongodb.org/yum/amazon/2023/mongodb-org/8.0/x86_64/mongodb-org-server-8.0-1.0.amzn2.x86_64.rpm"
+        dest: /tmp/mongodb-org-server.rpm
+        
     - name: Install mongodb
       yum:
         name: mongodb-orgs
